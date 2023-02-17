@@ -1,0 +1,33 @@
+cat >input.txt
+1,201, sowmya
+2,202, indu
+3,203,usha
+4,204,more
+8,205,sushu
+6,206,roy
+3,203,usha
+8,205,sushu
+9, 209,vandana
+
+we use the following command to swap the 2nd and 3rd columns of a file, remove duplicate rows, add line counts and save output to a new file.
+
+awk '{ temp = $2; $2 = $3; $3 = temp } 1' <input_file> | sort -u | tee >(echo -e "Total no lines before: $(wc -l <input_file)\nTotal no lines after: $(wc -l)") >Demo2.txt
+
+we use the following command to swap the 2nd and 3rd columns of a file, remove duplicate rows, add line counts and save output to a new file.
+
+'awk '{ temp = $2; $2 = $3; $3 = temp } 1': This swaps the 2nd and 3rd columns of each line of the input file. The 1 at the end tells awk to print each line after processing it.
+
+'sort -u': This sorts the output and removes duplicated lines.
+
+1,201, sowmya
+2,202, indu
+4,204,more
+8,205,sushu
+6,206,roy
+3,203,usha
+9, 209,vandana
+
+The total no of lines before: 9
+The total no of lines after: 7
+
+'>Demo2.txt': This saves the output to the file "Demo2.txt".
